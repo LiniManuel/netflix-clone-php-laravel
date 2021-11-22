@@ -92,7 +92,7 @@ class UserController extends Controller {
                     'error' => 'Unauthorized',
                     'info' => 'Non puoi eliminare questo utente'
                 ], 403);
-            }
+            }    
                 $user->delete();
     
                 return [];

@@ -17,16 +17,12 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-//Movie routes without auth
-$router->get('/movies', 'MovieController@getAllMovies');
-$router->get('/movies/{id}', 'MovieController@get');
-$router->get('/movies/{userId}/posts', 'MovieController@getUserMovies');
-
-$router->get('/category', 'CategoryController@getAllCategories');
-
 $router->group(['middleware' => 'auth'], function() use($router){
 
     //Movie routes
+    $router->get('/movies', 'MovieController@getAllMovies');
+    $router->get('/movies/{id}', 'MovieController@get');
+    $router->get('/movies/{userId}/posts', 'MovieController@getUserMovies');
     $router->post('/movies', 'MovieController@createMovie');
     $router->put('/movies/{id}', 'MovieController@updateMovie');
     $router->delete('/movies/{id}', 'MovieController@deleteMovie');
@@ -42,6 +38,7 @@ $router->group(['middleware' => 'auth'], function() use($router){
     $router->post('/category', 'CategoryController@createCategory');
     $router->put('/category/{id}', 'CategoryController@updateCategory');
     $router->delete('/category/{id}', 'CategoryController@deleteCategory');
+    $router->get('/category', 'CategoryController@getAllCategories');
 
     //Actor routes
     $router->get('/actors', "ActorController@getAllActors");

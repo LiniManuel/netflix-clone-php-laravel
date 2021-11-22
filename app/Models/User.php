@@ -43,16 +43,4 @@ class User extends Model {
             'password' => ['required', 'min:8'],
         ];
     }
-
-    public function movies() {
-        return $this->hasMany(Movie::class);
-    }
-
-    public function delete() {
-
-        foreach ($this->movies as $movies) {
-            $movies->delete();
-        }
-        parent::delete();
-    }
 }
