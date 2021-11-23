@@ -21,7 +21,7 @@ class ActorController extends BaseController {
     }
 
     public function get($id) {
-        return Actor::findOrFail($id);
+        return Actor::with('movies')->findOrFail($id);
     }
 
     public function createActor(Request $request) {
