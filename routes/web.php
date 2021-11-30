@@ -52,4 +52,7 @@ $router->group(['middleware' => 'auth'], function() use($router){
 $router->post('/users', 'UserController@createUser');
 
 //login
-$router->post('/auth/login', 'AuthController@login');   
+$router->post('/auth/login', 'AuthController@login');  
+
+//mail
+$router->get('/mail','UserController@testEmail');

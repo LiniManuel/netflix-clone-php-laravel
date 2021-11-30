@@ -6,6 +6,8 @@ use Laravel\Lumen\Routing\Controller;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class UserController extends Controller {
         // solo per amministratori
@@ -96,6 +98,16 @@ class UserController extends Controller {
                 $user->delete();
     
                 return [];
+            }
+
+            public function testEmail(){
+                Mail::send('test', 
+                ['name' => 'Manuel',
+                 'token' => Str::random(32),
+                ], function($mail){
+                    $mail->subject('Test oggetto');
+                    $mail->to('linimanuel12@gmail.com','Manuel');
+                });
             }
     
 

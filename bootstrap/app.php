@@ -113,3 +113,12 @@ $app->router->group([
 });
 
 return $app;
+
+
+//EMAIL CONFIG
+$app->configure('mail');
+$app->alias('mailer', Illuminate\Mail\Mailer::class);
+$app->alias('mailer', Illuminate\Contracts\Mail\Mailer::class);
+$app->alias('mailer', Illuminate\Contracts\Mail\MailQueue::class);
+
+$app->register(Illuminate\Mail\MailServiceProvider::class);
